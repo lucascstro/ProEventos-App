@@ -1,6 +1,60 @@
-<div *ngFor="let item of eventos">
-    <p><b>Tema:</b>{{item.tema}}</p>
-    <p><b>Local:</b>{{item.local}}</p>
-    <hr>
-</div>
+<h2>Eventos</h2>
+<hr>
 
+<div class="row row-cols-lg-auto g-3 mb-2 align-items-center" action="">
+    <div>
+        <div class="input-group">
+            <input type="text" 
+                class="form-control mr-2"
+                placeholder="buscar" 
+                [(ngModel)]="filtroLista"/>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-outline-success">Buscar</button>
+    </div>
+    <h1>Filtro: {{filtroLista}}</h1>
+</div>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>      
+                <button class="navbar-toggler" (click)="showImg = !showImg" type="button">
+                    <button *ngIf="showImg" type="button" class="btn btn-outline-light btn-sm ms-3"><i class="fa-solid fa-eye"></i> Mostrar</button>
+                    <button *ngIf="!showImg" type="button" class="btn btn-outline-secondary btn-sm ms-3"><i class="fa-solid fa-eye-slash"></i> Esconder</button>
+              </button>
+            </th>
+            <th>#</th>
+            <th>Tema</th>
+            <th>Local</th>
+            <th>Data</th>
+            <th>Qtd Pessoas</th>
+            <th>Lote</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="eventos && eventos.length">
+        <tr *ngFor="let evento of eventos">
+            <td>
+                <img src="../../assets/{{evento.imageUrl}}" [isAnimated]="true" [collapse]="showImg" alt="" [style.width.px] = "widthImg" [style.margin.px]="marginImg">
+            </td>
+            <td>{{evento.eventoId}}</td>
+            <td>{{evento.tema}}</td>
+            <td>{{evento.local}}</td>
+            <td>{{evento.dataEvento}}</td>
+            <td>{{evento.qtdPessoas}}</td>
+            <td>{{evento.lote}}</td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm">Editar</button>
+                <button type="button" class="btn btn-secondary btn-sm">Deletar</button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot *ngIf="!eventos.length">
+        <tr>
+            <td colspan="8" class="text-center">
+                Nenhum evento encontrado...
+            </td>
+        </tr>
+    </tfoot>
+</table>

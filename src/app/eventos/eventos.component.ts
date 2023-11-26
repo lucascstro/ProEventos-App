@@ -7,7 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./eventos.component.scss'],
 })
 export class EventosComponent {
-  public eventos: any;
+  public eventos: any = [];
+
+  widthImg:number = 150;
+  marginImg:number = 2;
+  showImg: boolean = true;
+  filtroLista: string = '';
+
   constructor(private http: HttpClient) {
 
   }
@@ -20,21 +26,6 @@ export class EventosComponent {
     this.http.get('http://localhost:5098/api/evento').subscribe(
       response=>this.eventos=response,
       error => console.log(error),
-    )
-
-    // this.eventos = [
-    //   {
-    //     Tema: 'Angular',
-    //     Local: 'Belo horizonte',
-    //   },
-    //   {
-    //     Tema: 'Angular11',
-    //     Local: 'Belém',
-    //   },
-    //   {
-    //     Tema: 'Angular12',
-    //     Local: 'RJ',
-    //   },
-    // ];
+    );
   }
 }
