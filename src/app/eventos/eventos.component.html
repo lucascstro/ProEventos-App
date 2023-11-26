@@ -7,22 +7,22 @@
             <input type="text" 
                 class="form-control mr-2"
                 placeholder="buscar" 
-                [(ngModel)]="filtroLista"/>
+                [(ngModel)]="filtroLista"
+            />
         </div>
     </div>
-    <div>
-        <button type="submit" class="btn btn-outline-success">Buscar</button>
-    </div>
-    <h1>Filtro: {{filtroLista}}</h1>
 </div>
+
 <table class="table table-striped">
     <thead class="table-dark">
         <tr>
-            <th>      
+            <th>
                 <button class="navbar-toggler" (click)="showImg = !showImg" type="button">
-                    <button *ngIf="showImg" type="button" class="btn btn-outline-light btn-sm ms-3"><i class="fa-solid fa-eye"></i> Mostrar</button>
-                    <button *ngIf="!showImg" type="button" class="btn btn-outline-secondary btn-sm ms-3"><i class="fa-solid fa-eye-slash"></i> Esconder</button>
-              </button>
+                    <button *ngIf="showImg" type="button" class="btn btn-outline-light btn-sm ms-3"><i
+                            class="fa-solid fa-eye"></i> Mostrar</button>
+                    <button *ngIf="!showImg" type="button" class="btn btn-outline-secondary btn-sm ms-3"><i
+                            class="fa-solid fa-eye-slash"></i> Esconder</button>
+                </button>
             </th>
             <th>#</th>
             <th>Tema</th>
@@ -34,9 +34,10 @@
         </tr>
     </thead>
     <tbody *ngIf="eventos && eventos.length">
-        <tr *ngFor="let evento of eventos">
+        <tr *ngFor="let evento of eventosFiltrados">
             <td>
-                <img src="../../assets/{{evento.imageUrl}}" [isAnimated]="true" [collapse]="showImg" alt="" [style.width.px] = "widthImg" [style.margin.px]="marginImg">
+                <img src="../../assets/{{evento.imageUrl}}" [isAnimated]="true" [collapse]="showImg" alt=""
+                    [style.width.px]="widthImg" [style.margin.px]="marginImg">
             </td>
             <td>{{evento.eventoId}}</td>
             <td>{{evento.tema}}</td>
@@ -45,7 +46,7 @@
             <td>{{evento.qtdPessoas}}</td>
             <td>{{evento.lote}}</td>
             <td>
-                <button type="button" class="btn btn-primary btn-sm">Editar</button>
+                <button type="button" class="btn btn-primary btn-sm me-4">Editar</button>
                 <button type="button" class="btn btn-secondary btn-sm">Deletar</button>
             </td>
         </tr>
