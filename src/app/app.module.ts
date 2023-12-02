@@ -10,13 +10,16 @@ import { PalestrantesComponent } from './palestrantes/palestrantes.component';
 import { NavegacaoComponent } from './navegacao/navegacao.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { FormsModule } from '@angular/forms';
+import { EventoService } from './services/evento.service';
+import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventosComponent,
     PalestrantesComponent,
-    NavegacaoComponent
+    NavegacaoComponent,
+    DateTimeFormatPipe
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { FormsModule } from '@angular/forms';
     CollapseModule.forRoot(),
     FormsModule
   ],
-  providers: [],
+  providers: [EventoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
