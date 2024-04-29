@@ -1,17 +1,17 @@
-import { Component, Input, TemplateRef } from '@angular/core';
-import { EventoService } from '../services/evento.service';
-import { Evento } from '../models/Evento';
+import { Component, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+import { Evento } from 'src/app/models/Evento';
+import { EventoService } from 'src/app/services/evento.service';
 
 @Component({
-  selector: 'app-eventos',
-  templateUrl: './eventos.component.html',
-  styleUrls: ['./eventos.component.scss'],
-  // providers: [EventoService],
+  selector: 'app-eventos-lista',
+  templateUrl: './eventos-lista.component.html',
+  styleUrls: ['./eventos-lista.component.scss'],
 })
-export class EventosComponent {
+export class EventosListaComponent {
   public eventos: Evento[] = [];
   public eventosFiltrados: Evento[] = [];
   modalRef?: BsModalRef;
@@ -46,7 +46,8 @@ export class EventosComponent {
     private eventoService: EventoService,
     private modalService: BsModalService,
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -78,5 +79,9 @@ export class EventosComponent {
 
   decline(): void {
     this.modalRef?.hide();
+  }
+
+  detalheEventos(id: number): void {
+      this.router.navigate([`eventos/detalhe/${id}`]);
   }
 }

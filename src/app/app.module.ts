@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EventosComponent } from './eventos/eventos.component';
-import { PalestrantesComponent } from './palestrantes/palestrantes.component';
+import { EventosComponent } from './components/eventos/eventos.component';
+import { PalestrantesComponent } from './components/palestrantes/palestrantes.component';
 import { NavegacaoComponent } from './shared/navegacao/navegacao.component';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -21,9 +21,14 @@ import { FormsModule } from '@angular/forms';
 import { EventoService } from './services/evento.service';
 import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
 import { TituloComponent } from './shared/titulo/titulo.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { ContatosComponent } from './contatos/contatos.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PerfilComponent } from './components/user/perfil/perfil.component';
+import { ContatosComponent } from './components/contatos/contatos.component';
+import { EventosDetalheComponent } from './components/eventos/eventos-detalhe/eventos-detalhe.component';
+import { EventosListaComponent } from './components/eventos/eventos-lista/eventos-lista.component';
+import { UserComponent } from './components/user/user.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegistrationComponent } from './components/user/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,12 @@ import { ContatosComponent } from './contatos/contatos.component';
     TituloComponent,
     DashboardComponent,
     PerfilComponent,
-    ContatosComponent
+    ContatosComponent,
+    EventosDetalheComponent,
+    EventosListaComponent,
+    UserComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
